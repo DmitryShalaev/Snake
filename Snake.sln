@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MapLoader", "MapLoader\MapLoader.csproj", "{13DF8687-F0B0-460D-87C3-CE40897021F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{8CA40331-2256-4764-8259-347B6BDFB889}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6804772F-8C5D-4689-ACA8-F3944A3C2DD9}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13DF8687-F0B0-460D-87C3-CE40897021F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13DF8687-F0B0-460D-87C3-CE40897021F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13DF8687-F0B0-460D-87C3-CE40897021F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13DF8687-F0B0-460D-87C3-CE40897021F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CA40331-2256-4764-8259-347B6BDFB889}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CA40331-2256-4764-8259-347B6BDFB889}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CA40331-2256-4764-8259-347B6BDFB889}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CA40331-2256-4764-8259-347B6BDFB889}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B976D199-D3F6-46FE-8540-50FAC229C1D9}
+	EndGlobalSection
+EndGlobal
