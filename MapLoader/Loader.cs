@@ -25,7 +25,7 @@ public partial class Loader : Form {
 		FLP_Maps.Controls.Add(newMapItem);
 
 		foreach(var item in maps) {
-			MapItem MapItem = new((Bitmap)item.MapImage, item.Name);
+			MapItem MapItem = new(item.MapImage, item.Name);
 			MapItem.MapSelected += MapItem_MapSelected;
 			MapItem.MapDelete += MapItem_MapDelete;
 			FLP_Maps.Controls.Add(MapItem);
