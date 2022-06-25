@@ -43,7 +43,7 @@ partial class NewMapItem {
 			// PB_MapImage
 			// 
 			this.PB_MapImage.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.PB_MapImage.Image = global::MapLoader.Properties.Resources.NewIcon;
+			this.PB_MapImage.Image = Core.Resources.Resource._new;
 			this.PB_MapImage.Location = new System.Drawing.Point(0, 0);
 			this.PB_MapImage.Name = "PB_MapImage";
 			this.PB_MapImage.Size = new System.Drawing.Size(240, 350);

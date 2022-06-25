@@ -11,7 +11,7 @@ public class Map {
 
 	public Map() {
 		Name = "";
-		MapImage = new(1, 1);
+		MapImage = Resources.Resource.error;
 
 		NumberOfCells = 10;
 		ЕmptyСells = new();

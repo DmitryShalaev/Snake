@@ -51,8 +51,6 @@ partial class MapItem {
 			// 
 			this.PB_MapImage.ContextMenuStrip = this.CMS_MapItem;
 			this.PB_MapImage.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.PB_MapImage.ErrorImage = global::MapLoader.Properties.Resources.error;
-			this.PB_MapImage.InitialImage = global::MapLoader.Properties.Resources.error;
 			this.PB_MapImage.Location = new System.Drawing.Point(0, 0);
 			this.PB_MapImage.Name = "PB_MapImage";
 			this.PB_MapImage.Size = new System.Drawing.Size(240, 322);
