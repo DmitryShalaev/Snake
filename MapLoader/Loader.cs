@@ -53,7 +53,7 @@ public partial class Loader : Form {
 				BinaryFormatter formatter = new();
 				return (List<Map>)formatter.Deserialize(fs);
 			}
-		} catch(FileNotFoundException) {
+		} catch(Exception) {
 			return new();
 		}
 	}
@@ -71,7 +71,13 @@ public partial class Loader : Form {
 			constructor.ShowDialog();
 			Show();
 		} else {
-			MessageBox.Show(MapID.ToString());
+			Constructor constructor = new(maps[(int)MapID]);
+			constructor.MapSave += (map) => {
+				VisualizeMapsList();
+			};
+			Hide();
+			constructor.ShowDialog();
+			Show();
 		}
 	}
 

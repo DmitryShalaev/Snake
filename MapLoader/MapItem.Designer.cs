@@ -26,13 +26,13 @@ partial class MapItem {
 	private void InitializeComponent() {
 			this.components = new System.ComponentModel.Container();
 			this.panel1 = new System.Windows.Forms.Panel();
-			this.PB_MapImage = new System.Windows.Forms.PictureBox();
-			this.L_MapName = new System.Windows.Forms.Label();
 			this.CMS_MapItem = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.PB_MapImage = new System.Windows.Forms.PictureBox();
+			this.L_MapName = new System.Windows.Forms.Label();
 			this.panel1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.PB_MapImage)).BeginInit();
 			this.CMS_MapItem.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.PB_MapImage)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// panel1
@@ -46,6 +46,21 @@ partial class MapItem {
 			this.panel1.Size = new System.Drawing.Size(240, 350);
 			this.panel1.TabIndex = 0;
 			this.panel1.Click += new System.EventHandler(this.NewMapItem_Click);
+			// 
+			// CMS_MapItem
+			// 
+			this.CMS_MapItem.ImageScalingSize = new System.Drawing.Size(20, 20);
+			this.CMS_MapItem.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.deleteToolStripMenuItem});
+			this.CMS_MapItem.Name = "CMS_MapItem";
+			this.CMS_MapItem.Size = new System.Drawing.Size(123, 28);
+			// 
+			// deleteToolStripMenuItem
+			// 
+			this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+			this.deleteToolStripMenuItem.Size = new System.Drawing.Size(122, 24);
+			this.deleteToolStripMenuItem.Text = "Delete";
+			this.deleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
 			// 
 			// PB_MapImage
 			// 
@@ -72,21 +87,6 @@ partial class MapItem {
 			this.L_MapName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.L_MapName.Click += new System.EventHandler(this.NewMapItem_Click);
 			// 
-			// CMS_MapItem
-			// 
-			this.CMS_MapItem.ImageScalingSize = new System.Drawing.Size(20, 20);
-			this.CMS_MapItem.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.deleteToolStripMenuItem});
-			this.CMS_MapItem.Name = "CMS_MapItem";
-			this.CMS_MapItem.Size = new System.Drawing.Size(123, 28);
-			// 
-			// deleteToolStripMenuItem
-			// 
-			this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-			this.deleteToolStripMenuItem.Size = new System.Drawing.Size(122, 24);
-			this.deleteToolStripMenuItem.Text = "Delete";
-			this.deleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
-			// 
 			// MapItem
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -100,8 +100,8 @@ partial class MapItem {
 			this.Size = new System.Drawing.Size(250, 360);
 			this.Click += new System.EventHandler(this.NewMapItem_Click);
 			this.panel1.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.PB_MapImage)).EndInit();
 			this.CMS_MapItem.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.PB_MapImage)).EndInit();
 			this.ResumeLayout(false);
 
 	}

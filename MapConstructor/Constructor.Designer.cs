@@ -24,14 +24,18 @@ partial class Constructor {
 	///  the contents of this method with the code editor.
 	/// </summary>
 	private void InitializeComponent() {
+			this.components = new System.ComponentModel.Container();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.PB_Map = new System.Windows.Forms.PictureBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.TB_MapName = new System.Windows.Forms.TextBox();
 			this.TB_NumberOfCells = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
+			this.CMS_Constructor = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.eraseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.PB_Map)).BeginInit();
+			this.CMS_Constructor.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// panel1
@@ -48,6 +52,7 @@ partial class Constructor {
 			// PB_Map
 			// 
 			this.PB_Map.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.PB_Map.ContextMenuStrip = this.CMS_Constructor;
 			this.PB_Map.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.PB_Map.Location = new System.Drawing.Point(5, 5);
 			this.PB_Map.Margin = new System.Windows.Forms.Padding(0);
@@ -55,6 +60,7 @@ partial class Constructor {
 			this.PB_Map.Size = new System.Drawing.Size(758, 758);
 			this.PB_Map.TabIndex = 0;
 			this.PB_Map.TabStop = false;
+			this.PB_Map.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PB_Map_MouseUP);
 			// 
 			// label1
 			// 
@@ -79,6 +85,7 @@ partial class Constructor {
 			this.TB_NumberOfCells.Name = "TB_NumberOfCells";
 			this.TB_NumberOfCells.Size = new System.Drawing.Size(155, 27);
 			this.TB_NumberOfCells.TabIndex = 4;
+			this.TB_NumberOfCells.TextChanged += new System.EventHandler(this.TB_NumberOfCells_TextChanged);
 			this.TB_NumberOfCells.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_NumberOfCells_KeyPress);
 			// 
 			// label2
@@ -90,6 +97,21 @@ partial class Constructor {
 			this.label2.Size = new System.Drawing.Size(121, 20);
 			this.label2.TabIndex = 3;
 			this.label2.Text = "Number Of Cells:";
+			// 
+			// CMS_Constructor
+			// 
+			this.CMS_Constructor.ImageScalingSize = new System.Drawing.Size(20, 20);
+			this.CMS_Constructor.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.eraseToolStripMenuItem});
+			this.CMS_Constructor.Name = "CMS_MapConstructor";
+			this.CMS_Constructor.Size = new System.Drawing.Size(114, 28);
+			// 
+			// eraseToolStripMenuItem
+			// 
+			this.eraseToolStripMenuItem.Name = "eraseToolStripMenuItem";
+			this.eraseToolStripMenuItem.Size = new System.Drawing.Size(113, 24);
+			this.eraseToolStripMenuItem.Text = "Erase";
+			this.eraseToolStripMenuItem.Click += new System.EventHandler(this.EraseToolStripMenuItem_Click);
 			// 
 			// Constructor
 			// 
@@ -107,6 +129,7 @@ partial class Constructor {
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Constructor_FormClosing);
 			this.panel1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.PB_Map)).EndInit();
+			this.CMS_Constructor.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -120,4 +143,6 @@ partial class Constructor {
 	private TextBox TB_MapName;
 	private TextBox TB_NumberOfCells;
 	private Label label2;
+	private ContextMenuStrip CMS_Constructor;
+	private ToolStripMenuItem eraseToolStripMenuItem;
 }

@@ -7,14 +7,14 @@ public class Map {
 
 	public int NumberOfCells { get; set; }
 	public HashSet<(int X, int Y)> ЕmptyСells { get; set; }
-	public Dictionary<(int X, int Y), Сell> Сells { get; set; }
+	public Dictionary<(int X, int Y), System.Drawing.Color> OccupiedCells { get; set; }
 
 	public Map() {
-		Name = "";
+		Name = "Some text";
 		MapImage = Resources.Resource.error;
 
 		NumberOfCells = 10;
 		ЕmptyСells = new();
-		Сells = new();
+		OccupiedCells = new();
 	}
 }
