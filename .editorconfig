@@ -2,3 +2,6 @@
 
 # SYSLIB0011: Тип или член устарел
 dotnet_diagnostic.SYSLIB0011.severity = none
+
+# CA1416: Проверка совместимости платформы
+dotnet_diagnostic.CA1416.severity = none

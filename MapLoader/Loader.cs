@@ -1,5 +1,6 @@
 using System.Runtime.Serialization.Formatters.Binary;
 using Core;
+using MapConstructor;
 
 namespace MapLoader;
 
@@ -24,7 +25,7 @@ public partial class Loader : Form {
 		FLP_Maps.Controls.Add(newMapItem);
 
 		foreach(var item in maps) {
-			MapItem MapItem = new(item.MapImage, item.Name);
+			MapItem MapItem = new((Bitmap)item.MapImage, item.Name);
 			MapItem.MapSelected += MapItem_MapSelected;
 			MapItem.MapDelete += MapItem_MapDelete;
 			FLP_Maps.Controls.Add(MapItem);
@@ -61,8 +62,14 @@ public partial class Loader : Form {
 
 	private void MapItem_MapSelected(int? MapID) {
 		if(MapID == null) {
-			maps.Add(new(($"Map ¹{FLP_Maps.Controls.Count}"), Properties.Resources.error, 10, null, null));
-			VisualizeMapsList();
+			Constructor constructor = new(new());
+			constructor.MapSave += (map) => {
+				maps.Add(map);
+				VisualizeMapsList();
+			};
+			Hide();
+			constructor.ShowDialog();
+			Show();
 		} else {
 			MessageBox.Show(MapID.ToString());
 		}
