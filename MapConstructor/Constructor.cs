@@ -50,19 +50,7 @@ public partial class Constructor : Form {
 		return bmp;
 	}
 
-	private (int X, int Y) GetCellForPoint(Point point) {
-		for(int x = 0; x < NumberOfCells; x++) {
-			for(int y = 0; y < NumberOfCells; y++) {
-				decimal xCell = x * CellSize;
-				decimal yCell = y * CellSize;
-				if(xCell <= point.X && point.X <= xCell + CellSize &&
-				   yCell <= point.Y && point.Y <= yCell + CellSize) {
-					return (x, y);
-				}
-			}
-		}
-		return (-1, -1);
-	}
+	private (int X, int Y) GetCellForPoint(Point point) => ((int)(point.X / CellSize), (int)(point.Y / CellSize));
 
 	private void SelectCell((int X, int Y) value) {
 		if(!Map.OccupiedCells.ContainsKey(value)) {
