@@ -33,6 +33,7 @@ partial class Constructor {
 			this.TB_MapName = new System.Windows.Forms.TextBox();
 			this.TB_NumberOfCells = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
+			this.CB_Snake = new System.Windows.Forms.CheckBox();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.PB_Map)).BeginInit();
 			this.CMS_Constructor.SuspendLayout();
@@ -42,11 +43,11 @@ partial class Constructor {
 			// 
 			this.panel1.Controls.Add(this.PB_Map);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-			this.panel1.Location = new System.Drawing.Point(356, 0);
+			this.panel1.Location = new System.Drawing.Point(364, 0);
 			this.panel1.Margin = new System.Windows.Forms.Padding(0);
 			this.panel1.Name = "panel1";
 			this.panel1.Padding = new System.Windows.Forms.Padding(5);
-			this.panel1.Size = new System.Drawing.Size(768, 768);
+			this.panel1.Size = new System.Drawing.Size(810, 810);
 			this.panel1.TabIndex = 0;
 			// 
 			// PB_Map
@@ -57,7 +58,7 @@ partial class Constructor {
 			this.PB_Map.Location = new System.Drawing.Point(5, 5);
 			this.PB_Map.Margin = new System.Windows.Forms.Padding(0);
 			this.PB_Map.Name = "PB_Map";
-			this.PB_Map.Size = new System.Drawing.Size(758, 758);
+			this.PB_Map.Size = new System.Drawing.Size(800, 800);
 			this.PB_Map.TabIndex = 0;
 			this.PB_Map.TabStop = false;
 			this.PB_Map.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PB_Map_MouseDown);
@@ -115,10 +116,21 @@ partial class Constructor {
 			this.label2.TabIndex = 3;
 			this.label2.Text = "Number Of Cells:";
 			// 
+			// CB_Snake
+			// 
+			this.CB_Snake.AutoSize = true;
+			this.CB_Snake.Location = new System.Drawing.Point(12, 79);
+			this.CB_Snake.Name = "CB_Snake";
+			this.CB_Snake.Size = new System.Drawing.Size(76, 19);
+			this.CB_Snake.TabIndex = 5;
+			this.CB_Snake.Text = "Set Snake";
+			this.CB_Snake.UseVisualStyleBackColor = true;
+			// 
 			// Constructor
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-			this.ClientSize = new System.Drawing.Size(1124, 768);
+			this.ClientSize = new System.Drawing.Size(1174, 810);
+			this.Controls.Add(this.CB_Snake);
 			this.Controls.Add(this.TB_NumberOfCells);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.TB_MapName);
@@ -147,4 +159,5 @@ partial class Constructor {
 	private Label label2;
 	private ContextMenuStrip CMS_Constructor;
 	private ToolStripMenuItem eraseToolStripMenuItem;
+	private CheckBox CB_Snake;
 }

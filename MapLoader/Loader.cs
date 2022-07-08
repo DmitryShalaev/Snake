@@ -1,7 +1,7 @@
 using System.Runtime.Serialization.Formatters.Binary;
 using Core.Map;
-using MapConstructor;
 using Game;
+using MapConstructor;
 
 namespace MapLoader;
 
@@ -79,7 +79,7 @@ public partial class Loader : Form {
 	private void MapItem_MapSelected(int? MapID) {
 		if(MapID != null) {
 			GameForm game = new(maps[MapID.Value]);
-					
+
 			Hide();
 			game.ShowDialog();
 			Show();

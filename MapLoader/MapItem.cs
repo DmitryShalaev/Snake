@@ -20,9 +20,7 @@ public partial class MapItem : UserControl {
 
 	private void MapItem_Click(object sender, EventArgs e) => MapSelected?.Invoke(MapID);
 
-	private void DeleteToolStripMenuItem_Click(object sender, EventArgs e) {
-		MapDelete?.Invoke(MapID);
-	}
+	private void DeleteToolStripMenuItem_Click(object sender, EventArgs e) => MapDelete?.Invoke(MapID);
 
 	private void ChangeToolStripMenuItem_Click(object sender, EventArgs e) => MapChange?.Invoke(MapID);
 }
