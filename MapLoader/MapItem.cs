@@ -4,6 +4,7 @@ public partial class MapItem : UserControl {
 	public readonly int MapID;
 
 	public delegate void Selected(int? mapID);
+	public event Selected? MapChange;
 	public event Selected? MapSelected;
 	public event Selected? MapDelete;
 
@@ -17,9 +18,11 @@ public partial class MapItem : UserControl {
 
 	public static void ResetMapItemCount() => MapItemCount = 0;
 
-	private void NewMapItem_Click(object sender, EventArgs e) => MapSelected?.Invoke(MapID);
+	private void MapItem_Click(object sender, EventArgs e) => MapSelected?.Invoke(MapID);
 
 	private void DeleteToolStripMenuItem_Click(object sender, EventArgs e) {
 		MapDelete?.Invoke(MapID);
 	}
+
+	private void ChangeToolStripMenuItem_Click(object sender, EventArgs e) => MapChange?.Invoke(MapID);
 }

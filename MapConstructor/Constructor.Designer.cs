@@ -27,12 +27,12 @@ partial class Constructor {
 			this.components = new System.ComponentModel.Container();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.PB_Map = new System.Windows.Forms.PictureBox();
+			this.CMS_Constructor = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.eraseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.label1 = new System.Windows.Forms.Label();
 			this.TB_MapName = new System.Windows.Forms.TextBox();
 			this.TB_NumberOfCells = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
-			this.CMS_Constructor = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.eraseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.PB_Map)).BeginInit();
 			this.CMS_Constructor.SuspendLayout();
@@ -60,7 +60,24 @@ partial class Constructor {
 			this.PB_Map.Size = new System.Drawing.Size(758, 758);
 			this.PB_Map.TabIndex = 0;
 			this.PB_Map.TabStop = false;
+			this.PB_Map.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PB_Map_MouseDown);
+			this.PB_Map.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PB_Map_MouseMove);
 			this.PB_Map.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PB_Map_MouseUP);
+			// 
+			// CMS_Constructor
+			// 
+			this.CMS_Constructor.ImageScalingSize = new System.Drawing.Size(20, 20);
+			this.CMS_Constructor.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.eraseToolStripMenuItem});
+			this.CMS_Constructor.Name = "CMS_MapConstructor";
+			this.CMS_Constructor.Size = new System.Drawing.Size(102, 26);
+			// 
+			// eraseToolStripMenuItem
+			// 
+			this.eraseToolStripMenuItem.Name = "eraseToolStripMenuItem";
+			this.eraseToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+			this.eraseToolStripMenuItem.Text = "Erase";
+			this.eraseToolStripMenuItem.Click += new System.EventHandler(this.EraseToolStripMenuItem_Click);
 			// 
 			// label1
 			// 
@@ -68,7 +85,7 @@ partial class Constructor {
 			this.label1.Location = new System.Drawing.Point(9, 9);
 			this.label1.Margin = new System.Windows.Forms.Padding(0);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(86, 20);
+			this.label1.Size = new System.Drawing.Size(69, 15);
 			this.label1.TabIndex = 1;
 			this.label1.Text = "Map Name:";
 			// 
@@ -76,14 +93,14 @@ partial class Constructor {
 			// 
 			this.TB_MapName.Location = new System.Drawing.Point(133, 5);
 			this.TB_MapName.Name = "TB_MapName";
-			this.TB_MapName.Size = new System.Drawing.Size(155, 27);
+			this.TB_MapName.Size = new System.Drawing.Size(155, 23);
 			this.TB_MapName.TabIndex = 2;
 			// 
 			// TB_NumberOfCells
 			// 
 			this.TB_NumberOfCells.Location = new System.Drawing.Point(133, 39);
 			this.TB_NumberOfCells.Name = "TB_NumberOfCells";
-			this.TB_NumberOfCells.Size = new System.Drawing.Size(155, 27);
+			this.TB_NumberOfCells.Size = new System.Drawing.Size(155, 23);
 			this.TB_NumberOfCells.TabIndex = 4;
 			this.TB_NumberOfCells.TextChanged += new System.EventHandler(this.TB_NumberOfCells_TextChanged);
 			this.TB_NumberOfCells.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_NumberOfCells_KeyPress);
@@ -94,24 +111,9 @@ partial class Constructor {
 			this.label2.Location = new System.Drawing.Point(9, 42);
 			this.label2.Margin = new System.Windows.Forms.Padding(0);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(121, 20);
+			this.label2.Size = new System.Drawing.Size(98, 15);
 			this.label2.TabIndex = 3;
 			this.label2.Text = "Number Of Cells:";
-			// 
-			// CMS_Constructor
-			// 
-			this.CMS_Constructor.ImageScalingSize = new System.Drawing.Size(20, 20);
-			this.CMS_Constructor.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.eraseToolStripMenuItem});
-			this.CMS_Constructor.Name = "CMS_MapConstructor";
-			this.CMS_Constructor.Size = new System.Drawing.Size(114, 28);
-			// 
-			// eraseToolStripMenuItem
-			// 
-			this.eraseToolStripMenuItem.Name = "eraseToolStripMenuItem";
-			this.eraseToolStripMenuItem.Size = new System.Drawing.Size(113, 24);
-			this.eraseToolStripMenuItem.Text = "Erase";
-			this.eraseToolStripMenuItem.Click += new System.EventHandler(this.EraseToolStripMenuItem_Click);
 			// 
 			// Constructor
 			// 

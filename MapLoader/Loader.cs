@@ -1,6 +1,7 @@
 using System.Runtime.Serialization.Formatters.Binary;
-using Core;
+using Core.Map;
 using MapConstructor;
+using Game;
 
 namespace MapLoader;
 
@@ -21,21 +22,15 @@ public partial class Loader : Form {
 		MapItem.ResetMapItemCount();
 
 		NewMapItem newMapItem = new();
-		newMapItem.MapSelected += MapItem_MapSelected;
+		newMapItem.MapChange += MapItem_MapChange;
 		FLP_Maps.Controls.Add(newMapItem);
 
 		foreach(var item in maps) {
 			MapItem MapItem = new(item.MapImage, item.Name);
 			MapItem.MapSelected += MapItem_MapSelected;
+			MapItem.MapChange += MapItem_MapChange;
 			MapItem.MapDelete += MapItem_MapDelete;
 			FLP_Maps.Controls.Add(MapItem);
-		}
-	}
-
-	private void MapItem_MapDelete(int? mapID) {
-		if(mapID != null) {
-			maps.RemoveAt((int)mapID);
-			VisualizeMapsList();
 		}
 	}
 
@@ -60,7 +55,7 @@ public partial class Loader : Form {
 
 	private void Loader_Load(object sender, EventArgs e) => VisualizeMapsList();
 
-	private void MapItem_MapSelected(int? MapID) {
+	private void MapItem_MapChange(int? MapID) {
 		if(MapID == null) {
 			Constructor constructor = new(new());
 			constructor.MapSave += (map) => {
@@ -78,6 +73,23 @@ public partial class Loader : Form {
 			Hide();
 			constructor.ShowDialog();
 			Show();
+		}
+	}
+
+	private void MapItem_MapSelected(int? MapID) {
+		if(MapID != null) {
+			GameForm game = new(maps[MapID.Value]);
+					
+			Hide();
+			game.ShowDialog();
+			Show();
+		}
+	}
+
+	private void MapItem_MapDelete(int? mapID) {
+		if(mapID != null) {
+			maps.RemoveAt((int)mapID);
+			VisualizeMapsList();
 		}
 	}
 
