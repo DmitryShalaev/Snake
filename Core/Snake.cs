@@ -1,6 +1,6 @@
 ﻿namespace Core.Snake;
 
-internal enum Direction {
+public enum Direction {
 	LEFT,
 	RIGHT,
 	UP,
@@ -9,16 +9,17 @@ internal enum Direction {
 
 [Serializable]
 public class Snake : ICloneable {
-	public delegate (int X, int Y) Food();
-	public Food? CreateFood;
+	public delegate int Random(int max);
+	public Random? GetRandom;
+	public delegate void EndGame(string str);
+	public EndGame? End;
 
 	private readonly Map.Map Map;
 
-	public List<(int X, int Y)> Body { get; set; }
-	public (int X, int Y) FoodPoint;
+	public List<(int X, int Y)> Body { get; private set; }
+	public (int X, int Y) FoodPoint { get; private set; }
 
-	private Direction direction;
-
+	public Direction Direction;
 	private bool rotate = true;
 
 	public Snake(Map.Map map) {
@@ -41,7 +42,7 @@ public class Snake : ICloneable {
 		(int X, int Y) nextHead = GetNextPoint();
 
 		if(Body.Contains(nextHead) || Map.OccupiedCells.ContainsKey(nextHead)) {
-			//TODO: Game over
+			End?.Invoke("Game over");
 			return;
 		}
 		if(!Eat(nextHead)) {
@@ -57,7 +58,7 @@ public class Snake : ICloneable {
 	public (int X, int Y) GetNextPoint() {
 		(int X, int Y) point = GetHead();
 
-		switch(direction) {
+		switch(Direction) {
 			case Direction.LEFT:
 				if(point.X - 1 < 0) point.X = Map.NumberOfCells - 1; else point.X -= 1;
 				break;
@@ -76,35 +77,42 @@ public class Snake : ICloneable {
 
 	public void Rotation(Keys key) {
 		if(rotate) {
-			switch(direction) {
+			switch(Direction) {
 				case Direction.LEFT:
 				case Direction.RIGHT:
-					if(key == Keys.Down) direction = Direction.DOWN;
-					else if(key == Keys.Up) direction = Direction.UP;
+					if(key == Keys.Down) Direction = Direction.DOWN;
+					else if(key == Keys.Up) Direction = Direction.UP;
 					break;
 				case Direction.UP:
 				case Direction.DOWN:
-					if(key == Keys.Left) direction = Direction.LEFT;
-					else if(key == Keys.Right) direction = Direction.RIGHT;
+					if(key == Keys.Left) Direction = Direction.LEFT;
+					else if(key == Keys.Right) Direction = Direction.RIGHT;
 					break;
 			}
 			rotate = false;
 		}
 	}
 
-	public bool Eat((int X, int Y) nextHead) {
-		if(nextHead == FoodPoint) {
-			Body.Add(nextHead);
-			Map.ЕmptyСells.Remove(nextHead);
+	public void SpawnEat() {
+		if(Map.ЕmptyСells.Count == 0) {
+			End?.Invoke("Tou Win");
+			return;
+		}
 
-			if(CreateFood != null)
-				FoodPoint = CreateFood();
+		if(GetRandom != null)
+			FoodPoint = Map.ЕmptyСells.ToArray()[GetRandom.Invoke(Map.ЕmptyСells.Count - 1)];
+	}
+
+	public bool Eat((int X, int Y) Head) {
+		if(Head == FoodPoint) {
+			Body.Add(Head);
+			Map.ЕmptyСells.Remove(Head);
+
+			SpawnEat();
 
 			return true;
 		}
 		return false;
 	}
-
-	public void FoodCreated((int X, int Y) point) => FoodPoint = point;
 }
 

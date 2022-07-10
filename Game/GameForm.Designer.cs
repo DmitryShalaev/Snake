@@ -45,6 +45,7 @@
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 			this.Name = "GameForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GameForm_FormClosing);
 			this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GameForm_KeyUp);
 			((System.ComponentModel.ISupportInitialize)(this.PB_Map)).EndInit();
 			this.ResumeLayout(false);

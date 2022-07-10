@@ -1,4 +1,5 @@
 using Core.Map;
+using Core.Snake;
 
 namespace MapConstructor;
 
@@ -31,18 +32,28 @@ public partial class Constructor : Form {
 	private (int X, int Y) GetCellForPoint(Point point) => ((int)(point.X / Map.CellSize), (int)(point.Y / Map.CellSize));
 
 	private void SelectCell((int X, int Y) value) {
-		if(!Map.OccupiedCells.ContainsKey(value)) {
-			Map.OccupiedCells.Add(value, Color.Black);
-		} else {
-			Map.OccupiedCells.Remove(value);
+		if(!Map.Snake.Body.Contains(value)) {
+			if(!Map.OccupiedCells.ContainsKey(value)) {
+				Map.OccupiedCells.Add(value, Color.Black);
+			} else {
+				Map.OccupiedCells.Remove(value);
+			}
 		}
 	}
 
 	private void SelectSnake((int X, int Y) value) {
-		if(!Map.Snake.Body.Contains(value)) {
-			Map.Snake.Body.Add(value);
-		} else {
-			Map.Snake.Body.Remove(value);
+		if(!Map.OccupiedCells.ContainsKey(value)) {
+			if(!Map.Snake.Body.Contains(value)) {
+				if(Map.Snake.Body.Count > 0) {
+					if(Math.Abs(value.X - Map.Snake.Body[^1].X) + Math.Abs(value.Y - Map.Snake.Body[^1].Y) == 1)
+						Map.Snake.Body.Add(value);
+				} else {
+					Map.Snake.Body.Add(value);
+				}
+			} else {
+				int index = Map.Snake.Body.IndexOf(value);
+				Map.Snake.Body.RemoveRange(index, Map.Snake.Body.Count - index);
+			}
 		}
 	}
 
@@ -67,8 +78,9 @@ public partial class Constructor : Form {
 			gfx.FillRectangle(new SolidBrush(item.Value), (float)(item.Key.X * Map.CellSize) - CellPen.Width, (float)(item.Key.Y * Map.CellSize) - CellPen.Width, (float)Map.CellSize, (float)Map.CellSize);
 
 		if(drawSnake)
-			foreach(var (X, Y) in Map.Snake.Body)
-				gfx.FillRectangle(new SolidBrush(Color.Red), (float)(X * Map.CellSize) - CellPen.Width, (float)(Y * Map.CellSize) - CellPen.Width, (float)Map.CellSize, (float)Map.CellSize);
+			for(int i = 0; i < Map.Snake.Body.Count; i++) {
+				gfx.FillRectangle(new SolidBrush(i == Map.Snake.Body.Count - 1 ? Color.Blue : Color.Red), (float)(Map.Snake.Body[i].X * Map.CellSize) - 1, (float)(Map.Snake.Body[i].Y * Map.CellSize) - 1, (float)Map.CellSize, (float)Map.CellSize);
+			}
 
 		PB_Map.Image = bmpFront;
 		return bmpFront;
@@ -88,6 +100,20 @@ public partial class Constructor : Form {
 			for(int y = 0; y < Map.NumberOfCells; y++)
 				if(!Map.OccupiedCells.ContainsKey((x, y)))
 					Map.ÅmptyÑells.Add((x, y));
+
+		foreach(var item in Map.Snake.Body)
+			Map.ÅmptyÑells.Remove(item);
+
+		if(Map.Snake.Body.Count > 1) {
+			if(Map.Snake.Body[^1].X > Map.Snake.Body[^2].X)
+				Map.Snake.Direction = Direction.RIGHT;
+			else if(Map.Snake.Body[^1].X < Map.Snake.Body[^2].X)
+				Map.Snake.Direction = Direction.LEFT;
+			else if(Map.Snake.Body[^1].Y > Map.Snake.Body[^2].Y)
+				Map.Snake.Direction = Direction.DOWN;
+			else
+				Map.Snake.Direction = Direction.UP;
+		}
 
 		MapSave?.Invoke(Map);
 	}

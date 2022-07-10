@@ -6,8 +6,6 @@ using MapConstructor;
 namespace MapLoader;
 
 public partial class Loader : Form {
-	private readonly string Personal = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-
 	private readonly List<Map> maps;
 
 	public Loader() {
@@ -35,7 +33,7 @@ public partial class Loader : Form {
 	}
 
 	private void Serialize() {
-		using(FileStream fs = new(Personal + "\\Maps.dat", FileMode.OpenOrCreate)) {
+		using(FileStream fs = new("Maps.dat", FileMode.OpenOrCreate)) {
 			BinaryFormatter formatter = new();
 
 			formatter.Serialize(fs, maps);
@@ -44,7 +42,7 @@ public partial class Loader : Form {
 
 	private List<Map> Deserialize() {
 		try {
-			using(FileStream fs = new(Personal + "\\Maps.dat", FileMode.Open)) {
+			using(FileStream fs = new("Maps.dat", FileMode.Open)) {
 				BinaryFormatter formatter = new();
 				return (List<Map>)formatter.Deserialize(fs);
 			}
