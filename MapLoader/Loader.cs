@@ -40,7 +40,7 @@ public partial class Loader : Form {
 		}
 	}
 
-	private List<Map> Deserialize() {
+	private static List<Map> Deserialize() {
 		try {
 			using(FileStream fs = new("Maps.dat", FileMode.Open)) {
 				BinaryFormatter formatter = new();
